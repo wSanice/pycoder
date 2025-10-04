@@ -51,3 +51,29 @@ if"messages" not in st.session_state:
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
+
+client = None
+
+if groq_api_key:
+    try:
+        client = Groq(api_key = groq_api_key)
+    except Exception as e:
+        st.sidebar.error(f"Erro ao conectar com Groq: {e}")
+        st.stop()
+elif st.session_state.messages:
+    st.warning("Por favor, insira sua Groq API Key na barra lateral para continuar.")
+if prompt := st.chat_input("Digite sua pergunta sobre Python aqui..."):
+    if not client:
+        st.warning("Por favor, insira sua Groq API Key na barra lateral para continuar.")
+        st.stop()
+    st.session_state.messages.append({"role": "user", "content": prompt})
+
+    with st.chat_message("user"):
+        st.markdown(prompt)
+    message_for_api = [{"role": "system", "content": CUSTOM_PROMPT}]
+    for msg in st.session_state.messages:
+        message_for_api.append(msg)
+    with st.chat_message("assistant"):
+        with st.spinner("Analisando sua pergunta..."):
+            try:
+                
