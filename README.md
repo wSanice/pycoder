@@ -15,7 +15,7 @@ pip install -r requirements.txt
 
 # Execute a app:
 
-streamlit run dsa_assistente.py
+streamlit run ophiuchus.py
 
 # Exemplos de uso do assistente:
 
