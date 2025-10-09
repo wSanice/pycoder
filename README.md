@@ -1,5 +1,3 @@
-# pycoder
-Assistente Pessoal de Programação Python
 # Estudo de Caso 1 - DSA AI Coder - Criando Seu Assistente de Programação Python, em Python
 
 # Abra o terminal ou prompt de comando, navegue até a pasta com os arquivos e execute o comando abaixo para criar um ambiente virtual:
